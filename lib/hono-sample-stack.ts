@@ -13,6 +13,9 @@ export class HonoSampleStack extends cdk.Stack {
       handler: 'handler',
       runtime: lambda.Runtime.NODEJS_18_X,
     })
+    fn.addFunctionUrl({
+      authType: lambda.FunctionUrlAuthType.NONE,
+    })
 
     new apigw.LambdaRestApi(this, 'myapi', {
       handler: fn,
